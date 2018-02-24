@@ -1,19 +1,28 @@
 $(document).ready(function () {
 
+    // Set up global variables
     var correctAnswers;
     var incorrectAnswers;
     var correct = 'Correct!';
     var incorrect = 'Sorry, that\'s incorrect!';
     var question;
     var answer;
-    var wrongA;
-    var wrongB;
-    var wrongC;
+    var wrongOne;
+    var wrongTwo;
+    var wrongThree;
     var questionCount;
 
     // Create all questions as objects with info as properties
 
     var questOne = {
+        question:'Is this question true?',
+        correct:'Yes',
+        incorrectOne:'No',
+        incorrectTwo:'Maybe',
+        incorrectThree: 'What?'
+    };
+
+    var questTwo = {
         question:'x',
         correct:'x',
         incorrectOne:'r',
@@ -21,43 +30,106 @@ $(document).ready(function () {
         incorrectThree: 'q'
     };
 
-    var questTwo = {};
+    var questThree = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
 
-    var questThree = {};
+    var questFour = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
 
-    var questFour = {};
+    var questFive = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
 
-    var questFive = {};
+    var questSix = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
 
-    var questSix = {};
-
-    var questSeven = {};
+    var questSeven = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
     
-    var questEight = {};
+    var questEight = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
 
-    var questNine = {};
+    var questNine = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
 
-    var questTen = {};
+    var questTen = {
+        question:'x',
+        correct:'x',
+        incorrectOne:'r',
+        incorrectTwo:'t',
+        incorrectThree: 'q'
+    };
 
     // Create array containing all objects to pull from
 
-    var questions = [questOne, questTwo, questThree, questFour, questFive, questSix, questSeven, questEight, questNine, questTen];
+    var questionChoice = [questOne, questTwo, questThree, questFour, questFive, questSix, questSeven, questEight, questNine, questTen];
 
-    $('#question').text(questOne.question);
-    $('#answerOne').text(answer);
-    $('#answerTwo').text(questOne.incorrectOne);
-    $('#answerThree').text(questOne.incorrectTwo);
-    $('#answerFour').text(questOne.incorrectThree);
 
-    $('p').on('click', function() {
-        if ($(this).text() === answer){
-            console.log('correct');
-        }
-    });
+    function set () {
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        questionCount = 0;
+    };
 
-    console.log (questions[0].question);
+    function buildQuestion () {
+        question = questionChoice[questionCount].question;
+        answer = questionChoice[questionCount].correct;
+        wrongOne = questionChoice[questionCount].incorrectOne;
+        wrongTwo = questionChoice[questionCount].incorrectTwo;
+        wrongThree = questionChoice[questionCount].incorrectThree;
+        questionCount++;
+    }
 
-    
+    set ();
 
+    buildQuestion ();
+
+    console.log (question);
+    console.log (answer);
+    console.log (wrongOne);
+    console.log (wrongTwo);
+    console.log (wrongThree);
+
+    buildQuestion ();
+
+    console.log (question);
+    console.log (answer);
+    console.log (wrongOne);
+    console.log (wrongTwo);
+    console.log (wrongThree);
 
 });
