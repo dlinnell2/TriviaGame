@@ -98,6 +98,7 @@ $(document).ready(function () {
 
     var questionChoice = [questOne, questTwo, questThree, questFour, questFive, questSix, questSeven, questEight, questNine, questTen];
 
+    var randomPlaceAnswers = [];
 
     function set () {
         correctAnswers = 0;
@@ -105,6 +106,7 @@ $(document).ready(function () {
         questionCount = 0;
     };
 
+    // Pulls information from questionChoice array at current index number to build question and possible answers
     function buildQuestion () {
         question = questionChoice[questionCount].question;
         answer = questionChoice[questionCount].correct;
@@ -112,24 +114,32 @@ $(document).ready(function () {
         wrongTwo = questionChoice[questionCount].incorrectTwo;
         wrongThree = questionChoice[questionCount].incorrectThree;
         questionCount++;
+
+        //Place answers into local array
+        tempAnswer = [answer, wrongOne, wrongTwo, wrongThree];
+
+        //Use randomPlaceAnswers array to randomly assign answer placement
+        for (var i=3; i > -1; i--) {
+            var randomIndex = Math.floor(Math.random() * i);
+            randomPlaceAnswers.push(tempAnswer[randomIndex]);
+            tempAnswer.splice(randomIndex, 1, );
+            console.log (randomPlaceAnswers)
+            console.log (tempAnswer);
+        }
+
+        //Send question and randomly placed answers to page
+
+        $('#question').text(question);
+        $('#answerOne').text(randomPlaceAnswers[0]);
+        $('#answerTwo').text(randomPlaceAnswers[1]);
+        $('#answerThree').text(randomPlaceAnswers[2]);
+        $('#answerFour').text(randomPlaceAnswers[3]);
     }
 
     set ();
 
     buildQuestion ();
 
-    console.log (question);
-    console.log (answer);
-    console.log (wrongOne);
-    console.log (wrongTwo);
-    console.log (wrongThree);
-
-    buildQuestion ();
-
-    console.log (question);
-    console.log (answer);
-    console.log (wrongOne);
-    console.log (wrongTwo);
-    console.log (wrongThree);
+    setTimeout(buildQuestion, 5000);
 
 });
