@@ -5,7 +5,7 @@ On start button
     Present first question
     Present 4 possible answers
     Wait for user click on one of the answers
-    Compare user click with correcty answer
+    Compare user click with correct answer
         If correct present congrats and winning gif
         Add correct answer to correct answer total
         If correct present loss and losing gif
