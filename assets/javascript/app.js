@@ -32,4 +32,16 @@ $(document).ready(function () {
     $('#answerThree').text(questOne.incorrectTwo)
     $('#answerFour').text(questOne.incorrectThree)
 
+    $('p').on('click', function() {
+        console.log($(this).text());
+        console.log($(question).text());
+        if ($(this).text() === $('#question').text()){
+            console.log('correct');
+        }
+    });
+
+    var answer = questOne.question;
+
+    console.log(answer);
+
 });
