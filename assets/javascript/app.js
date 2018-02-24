@@ -139,29 +139,34 @@ $(document).ready(function () {
         $('#answerThree').text(randomPlaceAnswers[2]);
         $('#answerFour').text(randomPlaceAnswers[3]);
 
-        // Clear array and move question count in preparation of next game
-        questionCount++;
-        randomPlaceAnswers = [];
     }
 
     //When correct answer is selected
     function answerCorrect () {
-        //$('#gameplay').hide();
-        //$('#answerPage').show();
+        $('#gameplay').hide();
+        $('#answerPage').show();
         console.log ('correct')
 
         correctAnswers++;
+
+        // Clear array and move question count in preparation of next game
+        questionCount++;
+        randomPlaceAnswers = [];
 
         setTimeout(buildQuestion, 5000);
 
     };
 
     function answerIncorrect () {
-        //$('#gameplay').hide();
-        //$('#answerPage').show();
+        $('#gameplay').hide();
+        $('#answerPage').show();
         console.log ('incorrect')
 
         incorrectAnswers++;
+
+        // Clear array and move question count in preparation of next game
+        questionCount++;
+        randomPlaceAnswers = [];
 
         setTimeout(buildQuestion, 5000);
     }
