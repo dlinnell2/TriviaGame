@@ -1,9 +1,15 @@
 $(document).ready(function () {
 
-    var correctAnswers
-    var incorrectAnswers
-    var correct = 'Correct!'
-    var incorrect = 'Sorry, that\'s incorrect!'
+    var correctAnswers;
+    var incorrectAnswers;
+    var correct = 'Correct!';
+    var incorrect = 'Sorry, that\'s incorrect!';
+    var question;
+    var answer;
+    var wrongA;
+    var wrongB;
+    var wrongC;
+    var questionCount;
 
     // Create all questions as objects with info as properties
 
@@ -13,35 +19,45 @@ $(document).ready(function () {
         incorrectOne:'r',
         incorrectTwo:'t',
         incorrectThree: 'q'
-    }
+    };
 
-    console.log(questOne.question);
+    var questTwo = {};
 
+    var questThree = {};
 
-    var timeleft = 30;
-    var downloadTimer = setInterval(function () {
-        timeleft--;
-        document.getElementById("countdowntimer").textContent = timeleft;
-        if (timeleft <= 0)
-            clearInterval(downloadTimer);
-    }, 1000)
+    var questFour = {};
 
-    $('#question').text(questOne.question)
-    $('#answerOne').text(questOne.correct)
-    $('#answerTwo').text(questOne.incorrectOne)
-    $('#answerThree').text(questOne.incorrectTwo)
-    $('#answerFour').text(questOne.incorrectThree)
+    var questFive = {};
+
+    var questSix = {};
+
+    var questSeven = {};
+    
+    var questEight = {};
+
+    var questNine = {};
+
+    var questTen = {};
+
+    // Create array containing all objects to pull from
+
+    var questions = [questOne, questTwo, questThree, questFour, questFive, questSix, questSeven, questEight, questNine, questTen];
+
+    $('#question').text(questOne.question);
+    $('#answerOne').text(answer);
+    $('#answerTwo').text(questOne.incorrectOne);
+    $('#answerThree').text(questOne.incorrectTwo);
+    $('#answerFour').text(questOne.incorrectThree);
 
     $('p').on('click', function() {
-        console.log($(this).text());
-        console.log($(question).text());
-        if ($(this).text() === $('#question').text()){
+        if ($(this).text() === answer){
             console.log('correct');
         }
     });
 
-    var answer = questOne.question;
+    console.log (questions[0].question);
 
-    console.log(answer);
+    
+
 
 });
