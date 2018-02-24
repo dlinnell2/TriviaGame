@@ -4,13 +4,14 @@ $(document).ready(function () {
     var correctAnswers;
     var incorrectAnswers;
     var correct = 'Correct!';
-    var incorrect = 'Sorry, that\'s incorrect!';
+    var incorrect = 'Sorry! The correct answer was';
     var question;
     var answer;
     var wrongOne;
     var wrongTwo;
     var wrongThree;
     var questionCount;
+    var countdownTimer;
 
     // Create all questions as objects with info as properties
 
@@ -23,11 +24,11 @@ $(document).ready(function () {
     };
 
     var questTwo = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
-        incorrectThree: 'q'
+        question:'Is kitty cute?',
+        correct:'Definitely',
+        incorrectOne:'Cuter than anyone else',
+        incorrectTwo:'The CUTEST!',
+        incorrectThree: 'You would have to be blind bear to say no'
     };
 
     var questThree = {
@@ -106,25 +107,28 @@ $(document).ready(function () {
         questionCount = 0;
     };
 
-    // Pulls information from questionChoice array at current index number to build question and possible answers
+    // Function of builid gameplay div
     function buildQuestion () {
+
+        //Show gameplay div, hide others
+        $('#gameplay').show();
+        $('#answerPage').hide();
+
+        // Pull information from current question array and attach to variables
         question = questionChoice[questionCount].question;
         answer = questionChoice[questionCount].correct;
         wrongOne = questionChoice[questionCount].incorrectOne;
         wrongTwo = questionChoice[questionCount].incorrectTwo;
         wrongThree = questionChoice[questionCount].incorrectThree;
-        questionCount++;
 
         //Place answers into local array
         tempAnswer = [answer, wrongOne, wrongTwo, wrongThree];
 
         //Use randomPlaceAnswers array to randomly assign answer placement
-        for (var i=3; i > -1; i--) {
+        for (var i=4; i > 0; i--) {
             var randomIndex = Math.floor(Math.random() * i);
             randomPlaceAnswers.push(tempAnswer[randomIndex]);
             tempAnswer.splice(randomIndex, 1, );
-            console.log (randomPlaceAnswers)
-            console.log (tempAnswer);
         }
 
         //Send question and randomly placed answers to page
@@ -134,12 +138,50 @@ $(document).ready(function () {
         $('#answerTwo').text(randomPlaceAnswers[1]);
         $('#answerThree').text(randomPlaceAnswers[2]);
         $('#answerFour').text(randomPlaceAnswers[3]);
+
+        // Clear array and move question count in preparation of next game
+        questionCount++;
+        randomPlaceAnswers = [];
     }
+
+    //When correct answer is selected
+    function answerCorrect () {
+        //$('#gameplay').hide();
+        //$('#answerPage').show();
+        console.log ('correct')
+
+        correctAnswers++;
+
+        setTimeout(buildQuestion, 5000);
+
+    };
+
+    function answerIncorrect () {
+        //$('#gameplay').hide();
+        //$('#answerPage').show();
+        console.log ('incorrect')
+
+        incorrectAnswers++;
+
+        setTimeout(buildQuestion, 5000);
+    }
+
+    //===============================================================
+
+    //Gameplay
+
+    //===============================================================
 
     set ();
 
     buildQuestion ();
 
-    setTimeout(buildQuestion, 5000);
+    $('.answer').on('click', function(){
+        if ($(this).text() === answer) {
+            answerCorrect ();
+        } else {
+            answerIncorrect ();
+        };
+    })
 
 });
