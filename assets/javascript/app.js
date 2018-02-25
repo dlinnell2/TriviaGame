@@ -11,7 +11,9 @@ $(document).ready(function () {
     var wrongTwo;
     var wrongThree;
     var questionCount;
+    var clockInterval;
     var clockRunning = false;
+    var clockTime;
 
     // Create all questions as objects with info as properties
 
@@ -101,13 +103,24 @@ $(document).ready(function () {
 
     var randomPlaceAnswers = [];
 
-    function set() {
+    function start() {
         correctAnswers = 0;
         incorrectAnswers = 0;
         questionCount = 0;
+        $('#end').hide();
+        $('#gameplay').hide();
+        $('#answerPage').hide();
     };
 
-    // Function of builid gameplay div
+    function reset() {
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        questionCount = 0;
+        $('#end').hide();
+        $('#answerPage').hide();
+    };
+
+    // Function of builid gameplay div--------------------------------
     function buildQuestion() {
 
         console.log(questionCount);
@@ -144,33 +157,45 @@ $(document).ready(function () {
         //Start the clock
         clockRunning=true;
 
-        clock();
+        checkClock();
 
         console.log(clockRunning);
 
     }
 
-    function clock () {
-        if (clockRunning) {
-            console.log('running');
-        } else {
-            console.log('clock stopped')
+    function clock(){
+        clockTime--;
+        $('#countdown').text(clockTime);
+        if (clockTime === 0) {
+            clearInterval(clockInterval);
+            answerIncorrect();
         }
-    }
+    };
+
+    function clockRun(){
+        clockInterval = setInterval(clock, 1000);
+        };
+
+    function checkClock(){
+        if (clockRunning) {
+            clockTime = 30;
+            $('#countdown').text(clockTime);
+            clockRun();
+        } else {
+            clearInterval(clockInterval);
+        };
+    };
 
 
-    //When correct answer is selected
+    //When correct answer is selected---------------------------------
     function answerCorrect() {
 
         clockRunning=false;
 
-        clock();
-
-        console.log(clockRunning);
+        checkClock();
 
         $('#gameplay').hide();
         $('#answerPage').show();
-        console.log('correct')
 
         correctAnswers++;
 
@@ -178,20 +203,18 @@ $(document).ready(function () {
         questionCount++;
         randomPlaceAnswers = [];
 
-        console.log(questionCount);
-
         checkQuestion();
 
     };
 
     function answerIncorrect() {
+
         clockRunning=false;
 
-        console.log(clockRunning);
+        checkClock();
 
         $('#gameplay').hide();
         $('#answerPage').show();
-        console.log('incorrect')
 
         incorrectAnswers++;
 
@@ -225,7 +248,7 @@ $(document).ready(function () {
 
     //===============================================================
 
-    set();
+    start();
 
     buildQuestion();
 
