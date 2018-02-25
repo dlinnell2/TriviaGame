@@ -11,87 +11,87 @@ $(document).ready(function () {
     var wrongTwo;
     var wrongThree;
     var questionCount;
-    var countdownTimer;
+    var clockRunning = false;
 
     // Create all questions as objects with info as properties
 
     var questOne = {
-        question:'Is this question true?',
-        correct:'Yes',
-        incorrectOne:'No',
-        incorrectTwo:'Maybe',
+        question: 'Is this question true?',
+        correct: 'Yes',
+        incorrectOne: 'No',
+        incorrectTwo: 'Maybe',
         incorrectThree: 'What?'
     };
 
     var questTwo = {
-        question:'Is kitty cute?',
-        correct:'Definitely',
-        incorrectOne:'Cuter than anyone else',
-        incorrectTwo:'The CUTEST!',
+        question: 'Is kitty cute?',
+        correct: 'Definitely',
+        incorrectOne: 'Cuter than anyone else',
+        incorrectTwo: 'The CUTEST!',
         incorrectThree: 'You would have to be blind bear to say no'
     };
 
     var questThree = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
 
     var questFour = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
 
     var questFive = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
 
     var questSix = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
 
     var questSeven = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
-    
+
     var questEight = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
 
     var questNine = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
 
     var questTen = {
-        question:'x',
-        correct:'x',
-        incorrectOne:'r',
-        incorrectTwo:'t',
+        question: 'x',
+        correct: 'x',
+        incorrectOne: 'r',
+        incorrectTwo: 't',
         incorrectThree: 'q'
     };
 
@@ -101,14 +101,16 @@ $(document).ready(function () {
 
     var randomPlaceAnswers = [];
 
-    function set () {
+    function set() {
         correctAnswers = 0;
         incorrectAnswers = 0;
         questionCount = 0;
     };
 
     // Function of builid gameplay div
-    function buildQuestion () {
+    function buildQuestion() {
+
+        console.log(questionCount);
 
         //Show gameplay div, hide others
         $('#gameplay').show();
@@ -125,7 +127,7 @@ $(document).ready(function () {
         tempAnswer = [answer, wrongOne, wrongTwo, wrongThree];
 
         //Use randomPlaceAnswers array to randomly assign answer placement
-        for (var i=4; i > 0; i--) {
+        for (var i = 4; i > 0; i--) {
             var randomIndex = Math.floor(Math.random() * i);
             randomPlaceAnswers.push(tempAnswer[randomIndex]);
             tempAnswer.splice(randomIndex, 1, );
@@ -139,13 +141,36 @@ $(document).ready(function () {
         $('#answerThree').text(randomPlaceAnswers[2]);
         $('#answerFour').text(randomPlaceAnswers[3]);
 
+        //Start the clock
+        clockRunning=true;
+
+        clock();
+
+        console.log(clockRunning);
+
     }
 
+    function clock () {
+        if (clockRunning) {
+            console.log('running');
+        } else {
+            console.log('clock stopped')
+        }
+    }
+
+
     //When correct answer is selected
-    function answerCorrect () {
+    function answerCorrect() {
+
+        clockRunning=false;
+
+        clock();
+
+        console.log(clockRunning);
+
         $('#gameplay').hide();
         $('#answerPage').show();
-        console.log ('correct')
+        console.log('correct')
 
         correctAnswers++;
 
@@ -153,14 +178,20 @@ $(document).ready(function () {
         questionCount++;
         randomPlaceAnswers = [];
 
-        setTimeout(buildQuestion, 5000);
+        console.log(questionCount);
+
+        checkQuestion();
 
     };
 
-    function answerIncorrect () {
+    function answerIncorrect() {
+        clockRunning=false;
+
+        console.log(clockRunning);
+
         $('#gameplay').hide();
         $('#answerPage').show();
-        console.log ('incorrect')
+        console.log('incorrect')
 
         incorrectAnswers++;
 
@@ -168,8 +199,25 @@ $(document).ready(function () {
         questionCount++;
         randomPlaceAnswers = [];
 
-        setTimeout(buildQuestion, 5000);
-    }
+        checkQuestion();
+
+    };
+
+    function checkQuestion() {
+        if (questionCount < 10) {
+            setTimeout(buildQuestion, 50);
+        } else {
+            setTimeout(gameEnd, 50);
+        };
+    };
+
+    function gameEnd() {
+        console.log('End!');
+
+        $('#answerPage').hide();
+        $('#end').show();
+
+    };
 
     //===============================================================
 
@@ -177,16 +225,17 @@ $(document).ready(function () {
 
     //===============================================================
 
-    set ();
+    set();
 
-    buildQuestion ();
+    buildQuestion();
 
-    $('.answer').on('click', function(){
+    $('.answer').on('click', function () {
         if ($(this).text() === answer) {
-            answerCorrect ();
+            answerCorrect();
         } else {
-            answerIncorrect ();
+            answerIncorrect();
         };
-    })
+    });
+
 
 });
