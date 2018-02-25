@@ -110,6 +110,7 @@ $(document).ready(function () {
         $('#end').hide();
         $('#gameplay').hide();
         $('#answerPage').hide();
+        buildQuestion();
     };
 
     function reset() {
@@ -237,6 +238,9 @@ $(document).ready(function () {
     function gameEnd() {
         console.log('End!');
 
+        $('#rightAnswers').text(correctAnswers);
+        $('#wrongAnswers').text(incorrectAnswers);
+
         $('#answerPage').hide();
         $('#end').show();
 
@@ -249,8 +253,6 @@ $(document).ready(function () {
     //===============================================================
 
     start();
-
-    buildQuestion();
 
     $('.answer').on('click', function () {
         if ($(this).text() === answer) {
