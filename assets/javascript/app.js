@@ -121,7 +121,7 @@ $(document).ready(function () {
         $('#answerPage').hide();
     };
 
-    // Function of builid gameplay div--------------------------------
+    // Function to build gameplay div---------------------------------
     function buildQuestion() {
 
         console.log(questionCount);
@@ -158,7 +158,7 @@ $(document).ready(function () {
         //Start the clock
         clockRunning=true;
 
-        checkClock();
+        //checkClock();
 
         console.log(clockRunning);
 
@@ -191,39 +191,53 @@ $(document).ready(function () {
     //When correct answer is selected---------------------------------
     function answerCorrect() {
 
+        //Stop the clock running
         clockRunning=false;
-
         checkClock();
 
+        //Format the answer page
+        $('#status').text(correct);
+
+        $('#answerGif').attr('src', './assets/images/right' +(Math.floor(Math.random()*5)+1) + '.gif');
+
+        
+        //Reveal answer page
         $('#gameplay').hide();
         $('#answerPage').show();
 
+        // Change variable values and clear array in preparation fro next questions
         correctAnswers++;
 
-        // Clear array and move question count in preparation of next game
         questionCount++;
         randomPlaceAnswers = [];
 
-        checkQuestion();
+        //Trigger the next question or end game
+        //checkQuestion();
 
     };
 
     function answerIncorrect() {
 
+        // Stop the clock
         clockRunning=false;
-
         checkClock();
 
+        // Format the answer page
+        $('#answerGif').attr('src', './assets/images/wrong' +(Math.floor(Math.random()*5)+1) + '.gif');
+
+        
+        // Reveal answer page
         $('#gameplay').hide();
         $('#answerPage').show();
 
+        // Change variable values and clear array in preparation fro next questions
         incorrectAnswers++;
 
-        // Clear array and move question count in preparation of next game
         questionCount++;
         randomPlaceAnswers = [];
 
-        checkQuestion();
+        // Trigger next question or end game
+        //checkQuestion();
 
     };
 
@@ -253,6 +267,7 @@ $(document).ready(function () {
     //===============================================================
 
     start();
+
 
     $('.answer').on('click', function () {
         if ($(this).text() === answer) {
