@@ -107,10 +107,11 @@ $(document).ready(function () {
         correctAnswers = 0;
         incorrectAnswers = 0;
         questionCount = 0;
+        $('#start').show();
         $('#end').hide();
         $('#gameplay').hide();
         $('#answerPage').hide();
-        buildQuestion();
+    
     };
 
     function reset() {
@@ -127,6 +128,7 @@ $(document).ready(function () {
         console.log(questionCount);
 
         //Show gameplay div, hide others
+        $('#start').hide();
         $('#gameplay').show();
         $('#answerPage').hide();
 
@@ -267,6 +269,8 @@ $(document).ready(function () {
     //===============================================================
 
     start();
+
+    $('#startButton').on('click', buildQuestion);    
 
 
     $('.answer').on('click', function () {
