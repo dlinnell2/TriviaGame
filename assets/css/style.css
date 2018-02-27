@@ -1,0 +1,12 @@
+body {
+    background-color:black;
+    color: white;
+}
+
+#background {
+    position:absolute;
+    right: 0;
+    bottom: 0;
+    width: 300px;
+    opacity: 0.4;
+}

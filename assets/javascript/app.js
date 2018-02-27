@@ -272,7 +272,6 @@ $(document).ready(function () {
 
     $('#startButton').on('click', buildQuestion);    
 
-
     $('.answer').on('click', function () {
         if ($(this).text() === answer) {
             answerCorrect();
