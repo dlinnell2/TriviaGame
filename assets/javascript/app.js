@@ -127,11 +127,6 @@ $(document).ready(function () {
 
         console.log(questionCount);
 
-        //Show gameplay div, hide others
-        $('#start').hide();
-        $('#gameplay').show();
-        $('#answerPage').hide();
-
         // Pull information from current question array and attach to variables
         question = questionChoice[questionCount].question;
         answer = questionChoice[questionCount].correct;
@@ -163,6 +158,11 @@ $(document).ready(function () {
         //checkClock();
 
         console.log(clockRunning);
+
+        //Show gameplay div, hide others
+        $('#start').hide();
+        $('#gameplay').show();
+        $('#answerPage').hide();
 
     }
 
@@ -225,6 +225,7 @@ $(document).ready(function () {
         checkClock();
 
         // Format the answer page
+        $('#status').text(incorrect + answer + '!');
         $('#answerGif').attr('src', './assets/images/wrong' +(Math.floor(Math.random()*5)+1) + '.gif');
 
         
