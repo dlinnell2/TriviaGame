@@ -26,11 +26,11 @@ $(document).ready(function () {
     };
 
     var questTwo = {
-        question: 'Is kitty cute?',
-        correct: 'Definitely',
-        incorrectOne: 'Cuter than anyone else',
-        incorrectTwo: 'The CUTEST!',
-        incorrectThree: 'You would have to be blind bear to say no'
+        question: 'x',
+        correct: 'y',
+        incorrectOne: 't',
+        incorrectTwo: 'r',
+        incorrectThree: 'x',
     };
 
     var questThree = {
@@ -245,9 +245,9 @@ $(document).ready(function () {
 
     function checkQuestion() {
         if (questionCount < 10) {
-            setTimeout(buildQuestion, 50);
+            setTimeout(buildQuestion, 5000);
         } else {
-            setTimeout(gameEnd, 50);
+            setTimeout(gameEnd, 5000);
         };
     };
 

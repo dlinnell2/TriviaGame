@@ -16,33 +16,21 @@ body {
     opacity: 0.4;
 }
 
-#container {
-    width:100%;
-    height: 600px;
+#header {
+    position: relative;
+    top: 50px;
 }
 
 h1 {
-    font-size: 48px;
-    margin-top: 5%;
-    width: 100%;
-    padding-left: 35%;
-    padding-right: 35%;
+    text-align: center;
 }
 
-
-#start {
-    width: 80%;
-    height: 100%;
-    margin: 5%;
+#body {
     position: relative;
+    top: 100px;
+    min-height: 500px;
 }
 
-h2{
-    font-size: 24px;
-    position: absolute;
-    width: 30%;
-    margin-left: 35%;
-
-
-
+h2 {
+    text-align: center;
 }
