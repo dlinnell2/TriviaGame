@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
         crossorigin="anonymous">
 
-    <link rel="stylesheet" type="text/css" href="./assets/css/fonts/fonts.css" />
-
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -37,7 +35,7 @@
 
         <div id='start'>
 
-                <h2 id='startButton'>Press to begin</h2>
+            <h2 id='startButton'>Press to begin</h2>
 
         </div>
 
@@ -49,8 +47,7 @@
 
                 <div class='col-sm-8'>
 
-                    <p>You have
-                        <span id='countdown'></span> seconds remaining</p>
+                    <p id='countdown'></p>
 
                 </div>
 
@@ -65,11 +62,80 @@
                 <div class='col-sm-8'>
 
                     <h3 id='question'></h3>
+
+                </div>
+
+                <div class='col-sm-2'></div>
+
+            </div>
+
+            <div class='row'>
+
+                <div class='col-sm-3'></div>
+
+                <div class='col-sm-6'>
+
                     <h4 id='answerOne' class='answer'></h4>
+
+                </div>
+
+                <div class='col-sm-3'></div>
+
+            </div>
+
+            <div class='row'>
+
+                <div class='col-sm-3'></div>
+
+                <div class='col-sm-6'>
+
                     <h4 id='answerTwo' class='answer'></h4>
+
+                </div>
+
+                <div class='col-sm-3'></div>
+
+            </div>
+
+            <div class='row'>
+
+                <div class='col-sm-3'></div>
+
+                <div class='col-sm-6'>
+
                     <h4 id='answerThree' class='answer'></h4>
+
+                </div>
+
+                <div class='col-sm-3'></div>
+
+            </div>
+
+            <div class='row'>
+
+                <div class='col-sm-3'></div>
+
+                <div class='col-sm-6'>
+
                     <h4 id='answerFour' class='answer'></h4>
 
+                </div>
+
+                <div class='col-sm-3'></div>
+
+            </div>
+
+        </div>
+
+        <div id='answerPage'>
+
+            <div class='row'>
+
+                <div class='col-sm-2'></div>
+
+                <div class='col-sm-8'>
+                    <p id='status'></p>
+                    <img id='answerGif' src="">
                 </div>
 
                 <div class='col-sm-2'></div>
@@ -78,27 +144,66 @@
 
         </div>
 
-        <div id='answerPage'>
+        <div id='end'>
+
+            <div class='row'>
 
                 <div class='col-sm-2'></div>
 
                 <div class='col-sm-8'>
-            <p id='status'></p>
-            <img id='answerGif' src="">
+
+                    <p id='statusOne'></p>
+
+                </div>
+
+                <div class='col-sm-2'></div>
+
             </div>
 
-            <div class='col-sm-2'></div>
+            <div class='row'>
+
+                <div class='col-sm-2'></div>
+
+                <div class='col-sm-8'>
+
+                    <p id='rightAnswers'></p>
+
+                </div>
+
+                <div class='col-sm-2'></div>
+
+            </div>
+
+            <div class='row'>
+
+                <div class='col-sm-2'></div>
+
+                <div class='col-sm-8'>
+
+                    <p id='wrongAnswers'></p>
+
+                </div>
+
+                <div class='col-sm-2'></div>
+
+
+            </div>
+
+            <div class='row'>
+
+                <div class='col-sm-2'></div>
+
+                <div class='col-sm-8'>
+
+                    <p id='reset'></p>
+
+                </div>
+
+                <div class='col-sm-2'></div>
+
+            </div>
 
         </div>
-
-        <div id='end'>
-
-            <div id='rightAnswers'></div>
-            <div id='wrongAnswers'></div>
-
-        </div>
-
-    </div>
 
 </body>
 

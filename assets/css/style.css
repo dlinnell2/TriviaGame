@@ -1,10 +1,20 @@
+@font-face {
+    font-family: 'beatlesFont';
+    src: url('./bootle__-webfont.woff2'),
+         url('./bootle__-webfont.woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     background-color:black;
     color: white;
     box-sizing: border-box;
     font-family: beatlesFont;
     letter-spacing: 2px;
+    line-height: 1.6;
     width:100%;
+    word-spacing: 5px;
 }
 
 .container {
@@ -77,4 +87,18 @@ p {
 
 h3 {
     font-size: 36px;
+    line-height: 1.4;
+}
+
+#rightAnswers, #wrongAnswers {
+    font-size: 36px;
+}
+
+.answer {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.answer:hover{
+    background-color: #303030
 }
