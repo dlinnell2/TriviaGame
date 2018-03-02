@@ -93,7 +93,7 @@ $(document).ready(function () {
         question: 'Which is one of only two songs credited to all four Beatles?',
         correct: 'Flying',
         incorrectOne: 'Dig a Pony',
-        incorrectTwo: 'Revolution #9',
+        incorrectTwo: 'Revolution 9',
         incorrectThree: 'Blue Jay Way'
     };
 
